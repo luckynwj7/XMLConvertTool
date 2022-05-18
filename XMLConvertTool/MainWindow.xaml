@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XMLConvertTool"
         mc:Ignorable="d"
-        Height="474" Width="530"
+        Height="550" Width="530"
         Title="XMLConvertTool"
         Closing="Window_Closing">
     <StackPanel Margin="20,25,20,20">
@@ -33,7 +33,7 @@
             <TextBox Width="70" Name="attrValueNewTextBox"></TextBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
-            <TextBlock Text="Opacity속성 적용하기" Width="160" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBlock Text="fill-opacity에 기본 fill속성 부여하기" Width="200" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
             <CheckBox Name="opacityApplyCheckBox"></CheckBox>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="0,50,30,10" HorizontalAlignment="Right">

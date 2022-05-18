@@ -73,9 +73,19 @@ namespace XMLConvertTool
             {
                 string contentsStr = System.IO.File.ReadAllText(fileName);
                 string result = TextAllConvert(contentsStr);
-                string newFileName = savePath + FileNameChange(fileName, saveNewFileNameTextBox.Text);
+                string newFileName = savePath + FileNameChange(fileName, saveNewFileNameTextBox.Text, loadPath);
+
+                int endIndex = FindCharIndexInStr(newFileName.Length -1, newFileName, '\\', true);
+                string newFilePath = newFileName.Substring(0, endIndex);
+                DirectoryInfo di = new DirectoryInfo(newFilePath);
+                if (di.Exists == false)
+                {
+                    di.Create();
+                }
                 System.IO.File.WriteAllText(newFileName, result, Encoding.UTF8);
             }
+            checkFileTextBox.Text = saveFolderTextBox.Text;
+            saveNewFileNameTextBox.Text = "";
             MessageBox.Show("변환 완료");
         }
 
@@ -113,12 +123,12 @@ namespace XMLConvertTool
                         break;
                     }
                     string rowStr = text.Substring(i, endIndex - i + 1);
-                    rowStr = RowAtrributeValueConvert(rowStr);
                     if ((bool)opacityApplyCheckBox.IsChecked)
                     {
                         rowStr = RowOpacityConvert(rowStr);
                     }
-
+                    rowStr = RowAtrributeValueConvert(rowStr);
+                    
                     text = text.Remove(i, endIndex - i + 1);
                     text = text.Insert(i, rowStr);
 
@@ -142,10 +152,10 @@ namespace XMLConvertTool
             string value = rowStr.Substring(fillOpacityStartIndex, fillOpacityEndIndex - fillOpacityStartIndex);
 
 
-            if (rowStr.Contains(fillOpacityStr) && !rowStr.Contains(" opacity=\""))
+            if (rowStr.Contains(fillOpacityStr) && !rowStr.Contains(" fill=\""))
             {
                 // 이미 opacity 속성이 있는지 검사
-                string convertStr = " opacity=\"" + value + "\"" + fillOpacityStr + value + "\"";
+                string convertStr = " fill=\"#000000\"" + fillOpacityStr + value + "\"";
                 rowStr = rowStr.Replace(fillOpacityStr + value + "\"", convertStr);
             }
             return rowStr;
@@ -195,9 +205,9 @@ namespace XMLConvertTool
             return -1;
         }
 
-        public string FileNameChange(string text, string addText)
+        public string FileNameChange(string text, string addText, string rootDir)
         {
-            int startIndex = FindCharIndexInStr(text.Length - 1, text, '\\', true);
+            int startIndex = rootDir.Length;
             int endIndex = text.Length - 4;
             string fileRealName = text.Substring(startIndex, endIndex - startIndex);
             fileRealName += addText;
