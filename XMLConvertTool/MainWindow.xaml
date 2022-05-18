@@ -1,0 +1,47 @@
+﻿<Window x:Class="XMLConvertTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XMLConvertTool"
+        mc:Ignorable="d"
+        Height="474" Width="530"
+        Title="XMLConvertTool"
+        Closing="Window_Closing">
+    <StackPanel Margin="20,25,20,20">
+        <TextBlock Text="XML Convert Tool" FontSize="40" Margin="30,20,30,30" TextAlignment="Center"></TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <TextBlock Text="데이터 폴더 선택   " Width="160" TextAlignment="Right"></TextBlock>
+            <TextBox Width="200" Name="checkFileTextBox"></TextBox>
+            <Button Name="checkFileFindButton" Click="checkFileFindButton_Click">경로 찾기</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+            <TextBlock Text="저장할 폴더 선택   " Width="160" TextAlignment="Right"></TextBlock>
+            <TextBox Width="200" Name="saveFolderTextBox"></TextBox>
+            <Button Name="saveFolderButton" Click="saveFolderButton_Click">경로 찾기</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+            <TextBlock Text="파일 접미사 적용방식" Width="160" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBox Width="200" Name="saveNewFileNameTextBox"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+            <TextBlock Text="속성 이름" Width="70" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBox Width="70" Name="attrNameTextBox"></TextBox>
+            <TextBlock Text="이전 속성값" Width="70" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBox Width="70" Name="attrValueOriginTextBox"></TextBox>
+            <TextBlock Text="바꿀 속성값" Width="70" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <TextBox Width="70" Name="attrValueNewTextBox"></TextBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right">
+            <TextBlock Text="Opacity속성 적용하기" Width="160" TextAlignment="Right" Margin="0,0,10,0"></TextBlock>
+            <CheckBox Name="opacityApplyCheckBox"></CheckBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0,50,30,10" HorizontalAlignment="Right">
+            <Button Padding="10" x:Name="convertStartBtn" Click="convertStartBtn_Click" Width="100" Content="변환 시작하기"/>
+            <Button Padding="10" x:Name="eixtAppBtn" Click="eixtAppBtn_Click" Width="100" Margin="20,0,0,0" Content="종료하기"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" Margin="0,20,0,0">
+            <TextBlock><Run Text="한글팀 노원종"/></TextBlock>
+        </StackPanel>
+    </StackPanel>
+</Window>
